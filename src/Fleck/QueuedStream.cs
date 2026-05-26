@@ -134,7 +134,6 @@ namespace Fleck
             base.Dispose(disposing);
         }
 
-        // NUOVO CODICE (Inserito)
         IAsyncResult BeginWriteInternal(byte[] buffer, int offset, int count, AsyncCallback callback, object state, WriteData queued)
         {
             _pendingWrite++;
@@ -159,7 +158,7 @@ namespace Fleck
             return queued.AsyncResult;
         }
 
-// this Method avoid the recursion of the stack
+        // this Method avoid the recursion of the stack
         private void ProcessComplete(IAsyncResult ar, WriteData queued, AsyncCallback callback)
         {
             queued.AsyncResult.ActualResult = ar;
